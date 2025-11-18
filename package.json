@@ -1,8 +1,9 @@
 {
-  "name": "template",
+  "name": "netflix-clone",
   "version": "1.0.0",
-  "description": "",
+  "description": "Modern Netflix clone built with React 19",
   "main": "webpack.config.js",
+  "homepage": "https://sudhanshu-jha.github.io/netflix-clone",
   "browserslist": [
     ">1%",
     "ie>9"
@@ -11,7 +12,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "cross-env NODE_ENV=development webpack-dev-server",
     "build": "cross-env NODE_ENV=production webpack",
-    "lint": "eslint src"
+    "lint": "eslint src",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "author": "",
   "license": "ISC",
@@ -44,6 +47,7 @@
     "eslint-plugin-prettier": "^5.0.1",
     "eslint-plugin-react": "^7.33.2",
     "file-loader": "^6.2.0",
+    "gh-pages": "^6.3.0",
     "html-webpack-plugin": "^5.5.3",
     "mini-css-extract-plugin": "^2.7.6",
     "postcss-loader": "^7.3.3",

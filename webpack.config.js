@@ -12,7 +12,7 @@ module.exports = {
   output: {
     path: path.join(__dirname, 'dist'),
     filename: '[name].bundle.js',
-    publicPath: '/',
+    publicPath: process.env.NODE_ENV === 'production' ? '/netflix-clone/' : '/',
     clean: true
   },
 
