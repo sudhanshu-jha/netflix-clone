@@ -17,13 +17,21 @@ export default {
     });
   },
   fetchSearch: searchText => async dispatch => {
-    const response = await API.fetchMovieData(
-      `/search/movie?`,
-      `&query=${searchText}&page=1&include_adult=false`
-    );
-    dispatch({
-      type: constants.FETCH_SEARCH,
-      payload: response
-    });
+    try {
+      const response = await API.fetchMovieData(
+        `/search/movie?`,
+        `&query=${encodeURIComponent(searchText)}&page=1&include_adult=false`
+      );
+      dispatch({
+        type: constants.FETCH_SEARCH,
+        payload: response
+      });
+    } catch (error) {
+      console.error('Search failed:', error);
+      dispatch({
+        type: constants.FETCH_ERROR,
+        payload: error
+      });
+    }
   }
 };

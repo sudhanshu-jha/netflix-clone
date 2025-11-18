@@ -1,3 +1,5 @@
+@use "../../vars";
+
 .slider {
     margin-bottom: 80px;
 }
@@ -9,11 +11,11 @@
         font-weight: bold;
     }
     .sub-title {
-        color: $whiteGrey;
+        color: vars.$whiteGrey;
         background-color: transparent;
     }
     .castGenreList {
-        color: $netflixWhite;
+        color: vars.$netflixWhite;
     }
 }
 
@@ -29,4 +31,4 @@
 }
 
 
-@include addListBtn;
+@include vars.addListBtn;

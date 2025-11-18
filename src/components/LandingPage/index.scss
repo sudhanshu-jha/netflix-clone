@@ -1,8 +1,9 @@
-@import "HomeList";
-@import "./presentations/index";
+@use "../vars";
+@use "HomeList";
+@use "./presentations/index";
 
 /* MQ */
-@include maxMediaQueries(750px) {
+@include vars.maxMediaQueries(750px) {
   .list-title {
     padding-left: 20px;
   }

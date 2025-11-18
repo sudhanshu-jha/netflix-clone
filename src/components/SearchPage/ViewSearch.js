@@ -7,14 +7,20 @@ import { movieActions } from "../../actions";
 const ViewSearch = ({ searchResult, fetchTheMovie, fetchCast }) => (
   <div id="result-container">
     <ul>
-      {searchResult.map(movie => (
-        <SearchItem
-          key={movie.id}
-          movie={movie}
-          fetchTheMovie={fetchTheMovie}
-          fetchCast={fetchCast}
-        />
-      ))}
+      {searchResult && searchResult.length > 0 ? (
+        searchResult.map(movie => (
+          <SearchItem
+            key={movie.id}
+            movie={movie}
+            fetchTheMovie={fetchTheMovie}
+            fetchCast={fetchCast}
+          />
+        ))
+      ) : (
+        <li style={{ textAlign: 'center', padding: '50px', fontSize: '18px' }}>
+          {searchResult && searchResult.length === 0 ? 'No movies found. Try a different search term.' : 'Enter a movie title to search...'}
+        </li>
+      )}
     </ul>
   </div>
 );

@@ -1,79 +1,137 @@
 # Netflix Clone  [![Codacy Badge](https://api.codacy.com/project/badge/Grade/70db0646202d47af8ba679b3253f7fdb)](https://www.codacy.com/app/sudhanshu-jha/netflix-clone?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=sudhanshu-jha/netflix-clone&amp;utm_campaign=Badge_Grade)
 
-Search and recommend movies similar to Netflix.
+A modern Netflix clone built with the latest web technologies. Search and discover movies with a Netflix-style interface.
 
-In combinations of React, Redux and React Router to create view layer for single page app. Configured Webpack to provides tools for both dev and prod env, PostCSS and Autoprefixer to ensure styles are supported across modern browsers.
+**✨ Recently Updated to Latest Versions (2024) - Now with React 19!**
+
+Built with the latest React 19, Redux, and React Router for a responsive single-page application. Configured with Webpack 5, modern Sass, and PostCSS for optimal development and production builds.
 
 <!-- ### Check out this site live on this [Link](http://netflix-react.surge.sh/) -->
 
 ![Demo](https://github.com/sudhanshu-jha/netflix-clone/blob/master/demo2.gif)
 
-## User Story
+## 🚀 Tech Stack
 
-- user can see recommended movies on homepage.
+### Frontend
+- **React 19** - Latest React with enhanced performance and new features
+- **Redux 5** - State management with latest Redux toolkit  
+- **React Router 6** - Latest routing with new element-based syntax
+- **Modern Sass** - Using @use instead of @import, with sass-embedded
+- **Webpack 5** - Module bundling with hot reloading
 
-- user can see description of a movie when mouse is hovering on movie's thumbnail.
+### Build Tools
+- **Babel** - ES6+ transpilation with latest presets
+- **PostCSS & Autoprefixer** - CSS processing and vendor prefixes
+- **ESLint & Prettier** - Code quality and formatting
+- **Hot Module Replacement** - Fast development experience
 
-- user can search for movies by titles.
+### Dependencies Updated (Nov 2024)
+- React: `15.6.1` → `19.2.0` ✨
+- Redux: `3.7.2` → `5.0.0` 
+- React Router: `4.2.2` → `6.28.0`
+- React Redux: `5.0.6` → `9.1.0`
+- Webpack: `3.5.5` → `5.89.0`
+- Sass: Modern API with sass-embedded
+- Removed deprecated `findDOMNode` usage for React 19 compatibility
+- All other dependencies to latest stable versions
 
-- user can see detail description when I click on a movie's thumbnail.
+## 📋 User Stories
 
-- cast list is included in the description.
+- ✅ Browse recommended movies on homepage with Netflix-style carousels
+- ✅ View movie descriptions on hover with smooth animations
+- ✅ Search for movies by title with instant results
+- ✅ Click movie thumbnails for detailed information pages
+- ✅ Browse cast information and movie details
+- ✅ Fully responsive design for all screen sizes
+- ✅ Modern Netflix-inspired UI/UX
 
-- responsive to different screen size.
+## 🛠️ Installation & Setup
 
-### Usage
+### Prerequisites
+- Node.js 16+ 
+- npm or yarn
 
-#### 1. install everything else
+### Quick Start
 
+1. **Clone the repository**
+```bash
+git clone https://github.com/sudhanshu-jha/netflix-clone.git
+cd netflix-clone
 ```
+
+2. **Install dependencies**
+```bash
 npm install
 ```
 
-#### 2a. run on localhost
-
-develop environment, run webpack dev server
-
-```
+3. **Start development server**
+```bash
 npm start
 ```
 
-This will get the files running on http://localhost:8080
-Webpack will watch for changes and update the browser when file changes.
+The app will be available at **http://localhost:3000** with hot module replacement for fast development.
 
-#### 2b. build dist directory
-
-production environment, run webpack
-
-```
+4. **Build for production**
+```bash
 npm run build
 ```
 
-The minified JS bundle files including the output html file will be store in dist directory.
+Optimized production files will be generated in the `dist/` directory.
 
-## Appreciation for all the great online Learning Resources that are provided for free.
+### Available Scripts
+- `npm start` - Start development server
+- `npm run build` - Create production build
+- `npm run lint` - Run ESLint for code quality
 
-#### Great Community:
+## 🔧 Configuration
 
-- inspired by kuanhsuh, his [post](https://forum.freecodecamp.org/t/check-it-out-my-netflix-clone-with-react/113587)
-- Guide Line for Learning, FreeCodeCamp, [link](https://www.freecodecamp.org/)
+The project uses modern build tools with sensible defaults:
+- **Webpack 5** with hot module replacement
+- **Babel** for ES6+ compilation
+- **Sass** with modern @use syntax
+- **PostCSS** for CSS optimization
+- **ESLint** for code quality
 
-#### Webpack:
+## 🚀 Features
 
-- Webpack Config Basics, by Matthew Hsiung, [link](https://www.youtube.com/playlist?list=PLnUE-7Cz5mHFU_qrXCxZlk0925nCMYKVS)
-- Webpack & CSS, by Matthew Hsiung, [link](https://www.youtube.com/playlist?list=PLnUE-7Cz5mHExcBWO9VV_GN-fniE2l-CR)
-- Webpack Config Advanced, by Matthew Hsiung, [link](https://www.youtube.com/playlist?list=PLnUE-7Cz5mHERezkTJfh0iU0LESkHmSxA)
+- **Netflix-style UI** - Authentic carousel animations and hover effects
+- **Movie Discovery** - Browse trending, popular, and top-rated content
+- **Search Functionality** - Real-time movie search with instant results  
+- **Detailed Movie Pages** - Cast information, genres, and descriptions
+- **Responsive Design** - Optimized for desktop, tablet, and mobile
+- **Performance Optimized** - Code splitting and lazy loading
 
-#### CSS:
+## 📁 Project Structure
 
-- Performant CSS Animations: Netflix Case Study, by Eli White's, [link](http://eng.wealthfront.com/2015/06/30/implementing-netflix-redesign/)
-- CSS Animations Neflix carousel, by Matthew James Taylor, [link](https://codepen.io/mattjamestaylor/pen/dodYPr)
-- Netflix Style Carousel, by Jonathan Carroll, [link](https://codepen.io/jonathanlcarroll/pen/aNgRBb?q=Netflix&limit=all&depth=everything&show_forks=false)
+```
+netflix-clone/
+├── src/
+│   ├── components/           # React components
+│   │   ├── Global/          # Header, Footer, Navigation
+│   │   ├── LandingPage/     # Home page with carousels
+│   │   ├── MoviePage/       # Movie detail pages
+│   │   └── SearchPage/      # Search results
+│   ├── actions/             # Redux actions
+│   ├── reducers/            # Redux reducers  
+│   ├── store/               # Redux store configuration
+│   └── utils/               # API utilities
+├── assets/                  # Images and static files
+└── webpack.config.js        # Build configuration
+```
 
-#### redux:
+## 🔗 API
 
-- React+Redux+Webpack, by Kurt Weiberth, [link](https://www.youtube.com/playlist?list=PLQDnxXqV213JJFtDaG0aE9vqvp6Wm7nBg)
+This project uses [The Movie Database (TMDb) API](https://www.themoviedb.org/documentation/api) for movie data.
 
-#### API:
+## 🙏 Credits
 
-- themoviedb, [link](https://www.themoviedb.org/documentation/api)
+Special thanks to the amazing learning resources and community:
+
+- **FreeCodeCamp** for educational guidance
+- **kuanhsuh** for original inspiration  
+- **TMDb API** for movie data
+- Open source community for webpack, React, and modern web tools
+
+## 📝 License
+
+This project is open source and available under the [MIT License](LICENSE).

@@ -1,13 +1,16 @@
 import React from "react";
 import Proptypes from "prop-types";
-import { findDOMNode } from "react-dom";
 import $ from "jquery";
 import ListItem from "./ListItem";
 
 class MovieList extends React.Component {
-  state = {
-    margin: 0
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      margin: 0
+    };
+    this.contentRef = React.createRef();
+  }
 
   renderMovieList = movieList =>
     movieList.map(movie => (
@@ -25,14 +28,15 @@ class MovieList extends React.Component {
       this.setState({
         margin: this.state.margin + 350
       });
-      // eslint-disable-next-line
-      const el = findDOMNode(this.refs.content);
-      $(el).animate(
-        {
-          marginLeft: "+=350px"
-        },
-        "fast"
-      );
+      const el = this.contentRef.current;
+      if (el) {
+        $(el).animate(
+          {
+            marginLeft: "+=350px"
+          },
+          "fast"
+        );
+      }
     }
   };
 
@@ -42,14 +46,15 @@ class MovieList extends React.Component {
       this.setState({
         margin: this.state.margin - 350
       });
-      // eslint-disable-next-line
-      const el = findDOMNode(this.refs.content);
-      $(el).animate(
-        {
-          marginLeft: "-=350px"
-        },
-        "fast"
-      );
+      const el = this.contentRef.current;
+      if (el) {
+        $(el).animate(
+          {
+            marginLeft: "-=350px"
+          },
+          "fast"
+        );
+      }
     }
   };
 
@@ -64,8 +69,7 @@ class MovieList extends React.Component {
         />
 
         <div className="module-section clearfix">
-          {/* eslint-disable-next-line react/no-string-refs */}
-          <ul id="content" ref="content">
+          <ul id="content" ref={this.contentRef}>
             <div className="listRow">{this.renderMovieList(movieList)}</div>
           </ul>
         </div>

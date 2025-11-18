@@ -1,3 +1,6 @@
+@use "sass:list";
+@use "sass:math";
+
 /* vars */
 
 $netflixRed: #b9090b;
@@ -13,13 +16,13 @@ $tileHeight: 160px;
 /* responsive layout */
 
 @mixin maxMediaQueries($arg...) {
-  @if length($arg) ==1 {
-    @media screen and (max-width: nth($arg, 1)) {
+  @if list.length($arg) ==1 {
+    @media screen and (max-width: list.nth($arg, 1)) {
       @content;
     }
   }
-  @if length($arg) ==2 {
-    @media screen and (max-width: nth($arg, 1)) and (min-width: nth($arg, 2)) {
+  @if list.length($arg) ==2 {
+    @media screen and (max-width: list.nth($arg, 1)) and (min-width: list.nth($arg, 2)) {
       @content;
     }
   }
@@ -36,7 +39,7 @@ $tileHeight: 160px;
   text-align: center;
   margin-right: $mgn;
   margin-bottom: $mgn;
-  width: ((96% - (($cols - 1) * $mgn)) / $cols);
+  width: math.div(96% - (($cols - 1) * $mgn), $cols);
   &:nth-child(#{$cols}n) {
     margin-right: 4%;
   }

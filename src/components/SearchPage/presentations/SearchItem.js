@@ -29,26 +29,28 @@ const renderPic = movie => {
     return (
       <img
         className="tile-img"
-        src={`http://image.tmdb.org/t/p/w500//${movie.backdrop_path}`}
+        src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
+        alt={movie.title}
       />
     );
   }
   if (movie.poster_path !== null) {
     return (
       <img
-        className="tile-img "
-        src={`http://image.tmdb.org/t/p/w500//${movie.poster_path}`}
+        className="tile-img"
+        src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+        alt={movie.title}
       />
     );
   }
-  return <img className="tile-img" src="http://via.placeholder.com/280x160" />;
+  return <img className="tile-img" src="https://via.placeholder.com/280x160" alt="No poster available" />;
 };
 const SearchItem = ({ movie, fetchTheMovie, fetchCast }) => (
   <li>
     <Link
       className="search-tile"
       to="/movie"
-      onClick={handleClick(movie, fetchTheMovie, fetchCast)}
+      onClick={() => handleClick(movie, fetchTheMovie, fetchCast)}
     >
       <div className="tile-img">{renderPic(movie)}</div>
       <div className=" photo-overlay">

@@ -1,6 +1,8 @@
+@use "../vars";
+
 /* tiles style */
 
-@include listingTiles;
+@include vars.listingTiles;
 .search-tile {
   position: relative;
   display: inline-block;
@@ -8,8 +10,8 @@
   cursor: pointer;
   padding: 5px;
   overflow: hidden;
-  width: $tileWidth * 1.1;
-  height: $tileHeight * 1.1;
+  width: vars.$tileWidth * 1.1;
+  height: vars.$tileHeight * 1.1;
   transition: 0.3s transform;
   transform-origin: 50% 50%;
   &:hover {
@@ -17,8 +19,8 @@
   }
   .tile-img {
     object-fit: cover;
-    width: $tileWidth * 1.1;
-    height: $tileHeight * 1.1;
+    width: vars.$tileWidth * 1.1;
+    height: vars.$tileHeight * 1.1;
   }
 }
 .search-tile-desc {
@@ -30,7 +32,7 @@
 .search-playbtn-container {
   margin: 45px 0px 10px 0px;
   text-align: center;
-  @include playBtn;
+  @include vars.playBtn;
 }
 
 /* grid layout */
@@ -38,27 +40,27 @@
 #result-container {
   margin-top: 4%;
   li {
-    @include grid(4, 5%);
+    @include vars.grid(4, 5%);
   }
 }
 
 /* MQ */
 
-@include maxMediaQueries(1840px) {
+@include vars.maxMediaQueries(1840px) {
   .search-tile {
     padding: 2px;
-    width: $tileWidth;
-    height: $tileHeight;
+    width: vars.$tileWidth;
+    height: vars.$tileHeight;
   }
   .search-playbtn-container {
     margin: 35px 0px 5px 0px;
   }
 }
 
-@include maxMediaQueries(1590px) {
+@include vars.maxMediaQueries(1590px) {
   .search-tile {
-    width: $tileWidth * 0.85;
-    height: $tileHeight * 0.85;
+    width: vars.$tileWidth * 0.85;
+    height: vars.$tileHeight * 0.85;
   }
   .search-playbtn-container {
     margin: 15px 0px 5px 0px;
@@ -71,7 +73,7 @@
   }
 }
 
-@include maxMediaQueries(1370px) {
+@include vars.maxMediaQueries(1370px) {
   .search-tile {
     &:hover {
       transform: scale(1.4);
@@ -88,15 +90,15 @@
   }
 }
 
-@include maxMediaQueries(1175px) {
+@include vars.maxMediaQueries(1175px) {
   #result-container {
     li {
-      @include grid(2, 4.5%);
+      @include vars.grid(2, 4.5%);
     }
   }
   .search-tile {
-    width: $tileWidth * 1.1;
-    height: $tileHeight * 1.1;
+    width: vars.$tileWidth * 1.1;
+    height: vars.$tileHeight * 1.1;
     &:hover {
       transform: scale(1.5);
     }
@@ -112,13 +114,13 @@
   }
 }
 
-@include maxMediaQueries(880px) {
+@include vars.maxMediaQueries(880px) {
   .search-playbtn-container {
     margin: 15px 0px 5px 0px;
   }
   .search-tile {
-    width: $tileWidth * 0.88;
-    height: $tileHeight * 0.88;
+    width: vars.$tileWidth * 0.88;
+    height: vars.$tileHeight * 0.88;
   }
   .search-tile-title {
     font-size: 0.8em;
@@ -128,18 +130,18 @@
   }
 }
 
-@include maxMediaQueries(760px) {
+@include vars.maxMediaQueries(760px) {
   #result-container {
     li {
-      @include grid(1, 12%);
+      @include vars.grid(1, 12%);
     }
   }
   .search-playbtn-container {
     margin: 45px 0px 5px 0px;
   }
   .search-tile {
-    width: $tileWidth * 1.2;
-    height: $tileHeight * 1.2;
+    width: vars.$tileWidth * 1.2;
+    height: vars.$tileHeight * 1.2;
   }
   .search-tile-title {
     font-size: 1em;
@@ -149,10 +151,10 @@
   }
 }
 
-@include maxMediaQueries(665px) {
+@include vars.maxMediaQueries(665px) {
   .search-tile {
-    width: $tileWidth;
-    height: $tileHeight;
+    width: vars.$tileWidth;
+    height: vars.$tileHeight;
   }
   .search-tile-title {
     font-size: 0.8em;
@@ -162,23 +164,23 @@
   }
 }
 
-@include maxMediaQueries(545px) {
+@include vars.maxMediaQueries(545px) {
   .search-tile {
-    width: $tileWidth * 0.9;
-    height: $tileHeight * 0.9;
+    width: vars.$tileWidth * 0.9;
+    height: vars.$tileHeight * 0.9;
   }
   .search-playbtn-container {
     margin: 15px 0px 3px 0px;
   }
 }
 
-@include maxMediaQueries(44px) {
+@include vars.maxMediaQueries(44px) {
   .search-playbtn-container {
     margin: 10px 0px 5px 0px;
   }
   .search-tile {
-    width: $tileWidth * 0.8;
-    height: $tileHeight * 0.8;
+    width: vars.$tileWidth * 0.8;
+    height: vars.$tileHeight * 0.8;
   }
   .search-tile-title {
     font-size: 0.75em;

@@ -14,11 +14,23 @@ class SearchInput extends React.Component {
     this.setState({ input: e.target.value });
   };
 
-  handleClick = () => {
+  handleSearch = () => {
     const { fetchSearch } = this.props;
     const { input } = this.state;
-    fetchSearch(input);
-    this.setState({ input: "" });
+    if (input.trim()) {
+      fetchSearch(input.trim());
+      this.setState({ input: "" });
+    }
+  };
+
+  handleKeyPress = e => {
+    if (e.key === 'Enter') {
+      this.handleSearch();
+    }
+  };
+
+  handleClick = () => {
+    this.handleSearch();
   };
 
   render() {
@@ -30,6 +42,7 @@ class SearchInput extends React.Component {
           value={this.state.input}
           placeholder="movie title..."
           onChange={this.handleChange}
+          onKeyPress={this.handleKeyPress}
         />
         <Link className=" navItem" to="/search" onClick={this.handleClick}>
           <img

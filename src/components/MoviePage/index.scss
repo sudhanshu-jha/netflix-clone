@@ -1,3 +1,5 @@
+@use "../vars";
+
 /* base style for movie page, small screen size first */
 
 #moviePage-container {
@@ -35,7 +37,7 @@
 
 /* media queries for larger screen size  */
 
-@include maxMediaQueries(720px) {
+@include vars.maxMediaQueries(720px) {
   #poster {
     width: 80vw;
   }
@@ -44,7 +46,7 @@
   }
 }
 
-@include maxMediaQueries(975px) {
+@include vars.maxMediaQueries(975px) {
   #moviePage-container {
     display: flex;
     flex-direction: column;
@@ -61,7 +63,7 @@
   }
 }
 
-@include maxMediaQueries(1300px, 976px) {
+@include vars.maxMediaQueries(1300px, 976px) {
   #desc-container {
     text-align: left;
   }
@@ -77,7 +79,7 @@
   }
 }
 
-@include maxMediaQueries(1500px, 1301px) {
+@include vars.maxMediaQueries(1500px, 1301px) {
   #desc-container {
     text-align: left;
   }
@@ -106,7 +108,7 @@
   }
 }
 
-@include minMediaQueries(1501px) {
+@include vars.minMediaQueries(1501px) {
   #desc-container {
     text-align: left;
   }
@@ -139,7 +141,7 @@
   }
 }
 
-@include minMediaQueries(1700px) {
+@include vars.minMediaQueries(1700px) {
   .movie-title {
     font-size: 2.5rem;
   }

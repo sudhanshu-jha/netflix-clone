@@ -1,3 +1,5 @@
+@use "../vars";
+
 /* tiles CSS transition and transform effects */
 
 .list-container {
@@ -20,7 +22,7 @@
   }
 }
 
-@include listingTiles;
+@include vars.listingTiles;
 .long-title {
   font-size: 0.9em;
 }
@@ -47,7 +49,7 @@ html {
   width: 4%;
   height: 280px;
   z-index: 40;
-  background: $netflixBlack;
+  background: vars.$netflixBlack;
   opacity: 0.5;
   cursor: pointer;
   text-align: center;
@@ -63,7 +65,7 @@ html {
   width: 4%;
   height: 280px;
   z-index: 40;
-  background: $netflixBlack;
+  background: vars.$netflixBlack;
   opacity: 0.5;
   display: flex;
   cursor: pointer;
@@ -84,10 +86,10 @@ html {
 }
 
 /* MQ */
-@include maxMediaQueries(1400px) {
+@include vars.maxMediaQueries(1400px) {
   .tile {
-    width: $tileWidth * 0.95;
-    height: $tileHeight * 0.95;
+    width: vars.$tileWidth * 0.95;
+    height: vars.$tileHeight * 0.95;
     &:hover {
       transform: scale(1.7);
     }
@@ -102,13 +104,13 @@ html {
   }
 }
 
-@include maxMediaQueries(750px) {
+@include vars.maxMediaQueries(750px) {
   .playbtn-container {
     margin: 18px 0px 5px 0px;
   }
   .tile {
-    width: $tileWidth * 0.8;
-    height: $tileHeight * 0.8;
+    width: vars.$tileWidth * 0.8;
+    height: vars.$tileHeight * 0.8;
     &:hover {
       transform: scale(1.4);
     }
@@ -125,13 +127,13 @@ html {
     }
   }
 }
-@include maxMediaQueries(445px) {
+@include vars.maxMediaQueries(445px) {
   .playbtn-container {
     margin: 15px 0px 0px 0px;
   }
   .tile {
-    width: $tileWidth * 0.75;
-    height: $tileHeight * 0.75;
+    width: vars.$tileWidth * 0.75;
+    height: vars.$tileHeight * 0.75;
     &:hover {
       transform: scale(1.3);
     }

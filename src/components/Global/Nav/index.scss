@@ -1,3 +1,5 @@
+@use "../../vars";
+
 nav {
     ul {
         padding: 10px;
@@ -5,7 +7,7 @@ nav {
     }
 }
 
-@include maxMediaQueries(750px) {
+@include vars.maxMediaQueries(750px) {
     nav {
         display: flex;
         flex-direction: column;
@@ -15,13 +17,13 @@ nav {
 
 .searchInput {
     padding: 5px;
-    color: $netflixWhite;
+    color: vars.$netflixWhite;
     border: 0;
     background: transparent;
     outline: none;
     &:focus {
         padding: 2px 5px 2px 5px;
-        border: solid 1px $netflixWhite;
+        border: solid 1px vars.$netflixWhite;
         border-radius: 3px;
     }
 }

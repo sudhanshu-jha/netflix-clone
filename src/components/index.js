@@ -1,17 +1,17 @@
 import React from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Routes as RouterRoutes, Route } from "react-router-dom";
 
 import "./index.scss";
 import { LandingPage, MoviePage, SearchPage, NotFoundPage } from "./allRoutes";
 
 const Routes = () => (
   <BrowserRouter>
-    <Switch>
-      <Route path="/" exact component={LandingPage} />
-      <Route path="/search" exact component={SearchPage} />
-      <Route path="/movie" exact component={MoviePage} />
-      <Route component={NotFoundPage} />
-    </Switch>
+    <RouterRoutes>
+      <Route path="/" element={<LandingPage />} />
+      <Route path="/search" element={<SearchPage />} />
+      <Route path="/movie" element={<MoviePage />} />
+      <Route path="*" element={<NotFoundPage />} />
+    </RouterRoutes>
   </BrowserRouter>
 );
 export default Routes;

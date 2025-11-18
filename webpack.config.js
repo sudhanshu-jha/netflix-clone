@@ -1,11 +1,10 @@
-/* eslint-disable */
-var webpack = require('webpack');
-var path = require('path');
-var htmlWebpackPlugin = require('html-webpack-plugin');
-var OpenBrowserPlugin = require('open-browser-webpack-plugin')
-const Uglify = require("uglifyjs-webpack-plugin");
+const webpack = require('webpack');
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
+  mode: process.env.NODE_ENV || 'development',
   entry: {
     app: path.join(__dirname, 'src', 'index.js')
   },
@@ -13,61 +12,78 @@ module.exports = {
   output: {
     path: path.join(__dirname, 'dist'),
     filename: '[name].bundle.js',
-    sourceMapFilename: '[name].bundle.map',
-    publicPath : '/'
+    publicPath: '/',
+    clean: true
   },
 
-  devtool: '#source-map',
+  devtool: 'source-map',
 
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.js$/,
         exclude: /(node_modules)/,
-        loader: 'babel-loader',
-        query: {
-          presets: ['react', 'es2017' , 'stage-0']
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env', '@babel/preset-react']
+          }
         }
-      }, {
+      },
+      {
         test: /\.(css|scss|sass)$/,
-        loader: 'style-loader!css-loader!postcss-loader!sass-loader',
+        use: [
+          process.env.NODE_ENV === 'production' ? MiniCssExtractPlugin.loader : 'style-loader',
+          'css-loader',
+          'postcss-loader',
+          {
+            loader: 'sass-loader',
+            options: {
+              implementation: require('sass-embedded'),
+              api: 'modern',
+              sassOptions: {
+                silenceDeprecations: ['legacy-js-api']
+              }
+            }
+          }
+        ],
         include: path.join(__dirname, 'src')
-      }, {
-        test: /\.(png|jpg)$/,
-        loader: 'file-loader',
-        include: path.join(__dirname, 'assets', 'img')
-      }]
-    },
-
-  devServer: {
-    historyApiFallback :true,
-    contentBase: path.join(__dirname, 'dist'),
-    inline: true,
-    hot : true,
-    stats: 'errors-only'
+      },
+      {
+        test: /\.(png|jpg|gif|svg)$/,
+        type: 'asset/resource',
+        generator: {
+          filename: 'images/[name].[hash][ext]'
+        }
+      }
+    ]
   },
 
+  devServer: {
+    historyApiFallback: true,
+    static: {
+      directory: path.join(__dirname, 'dist')
+    },
+    hot: true,
+    open: true,
+    port: 3000
+  },
 
-  plugins: process.env.NODE_ENV === 'production' ? [
-    new webpack.DefinePlugin({
-      'process.env': {
-        'NODE_ENV': JSON.stringify('production')
-      }
-    }),
-    new Uglify(),
-    new htmlWebpackPlugin({
-      template: path.join(__dirname, 'index.html'),
-      hash: true
-    })
-  ] : [
-    new htmlWebpackPlugin({
+  plugins: [
+    new HtmlWebpackPlugin({
       template: path.join(__dirname, 'index.html'),
       hash: true
     }),
-    new webpack.HotModuleReplacementPlugin(),
+    ...(process.env.NODE_ENV === 'production' ? [
+      new MiniCssExtractPlugin({
+        filename: '[name].[contenthash].css'
+      })
+    ] : [])
+  ],
 
-    new OpenBrowserPlugin({
-      url: 'http://localhost:8080'
-    })
-  ]
+  optimization: {
+    splitChunks: {
+      chunks: 'all'
+    }
+  }
 }

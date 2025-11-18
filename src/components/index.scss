@@ -1,9 +1,9 @@
-@import "vars";
-@import "./Global/Footer/index";
-@import "./Global/Nav/index";
-@import "./LandingPage/index";
-@import "./SearchPage/index";
-@import "./MoviePage/index";
+@use "vars";
+@use "./Global/Footer/index" as footer;
+@use "./Global/Nav/index" as nav;
+@use "./LandingPage/index" as landing;
+@use "./SearchPage/index" as search;
+@use "./MoviePage/index" as movie;
 
 /* Global */
 * {
@@ -16,7 +16,7 @@
 }
 
 #root {
-  background: $netflixBlack;
+  background: vars.$netflixBlack;
 }
 
 body {
